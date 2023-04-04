@@ -206,7 +206,7 @@ function load(file, options) {
 
     env._grow = grow;
 
-    return (typeof fetch === "function" && fetch || fetch_node)(file)
+    return fetch_node(file)
         .then(result => result.arrayBuffer())
         .then(buffer => WebAssembly.instantiate(buffer, { env: env }))
         .then(module => {
